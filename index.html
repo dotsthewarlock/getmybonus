@@ -1,1 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A reusable, mobile-friendly application layout for Get My Bonus."
+    >
+    <title>Get My Bonus</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="workspace-panel" aria-labelledby="workspace-title">
+        <header class="workspace-header">
+          <p class="eyebrow">Workspace</p>
+          <h1 id="workspace-title">Get My Bonus</h1>
+          <p class="panel-copy">
+            A simple static layout foundation for organizing bonus details and actions.
+          </p>
+        </header>
 
+        <nav class="panel-nav" aria-label="Workspace sections">
+          <a href="#overview">Overview</a>
+          <a href="#details">Details</a>
+          <a href="#status">Status</a>
+        </nav>
+
+        <section class="input-card" aria-labelledby="input-title">
+          <h2 id="input-title">Bonus workspace</h2>
+          <p>
+            Placeholder space for future bonus inputs, summaries, or helper content.
+          </p>
+          <label for="bonus-notes">Notes placeholder</label>
+          <textarea
+            id="bonus-notes"
+            name="bonus-notes"
+            rows="8"
+            placeholder="Add placeholder notes here."
+          ></textarea>
+        </section>
+
+        <section class="summary-list" aria-labelledby="summary-title">
+          <h2 id="summary-title">Quick summary</h2>
+          <article>
+            <span>Pending items</span>
+            <strong>0</strong>
+          </article>
+          <article>
+            <span>Ready items</span>
+            <strong>0</strong>
+          </article>
+          <article>
+            <span>Completed items</span>
+            <strong>0</strong>
+          </article>
+        </section>
+      </aside>
+
+      <main class="content-panel" id="top">
+        <section class="content-section hero-section" id="overview" aria-labelledby="overview-title">
+          <p class="eyebrow">Application layout</p>
+          <h2 id="overview-title">A focused workspace for Get My Bonus.</h2>
+          <p>
+            This page now uses a dark, two-panel application structure instead of a
+            marketing landing page. The content is intentionally generic while the
+            layout foundation is prepared for future bonus-related features.
+          </p>
+        </section>
+
+        <section class="content-section" id="details" aria-labelledby="details-title">
+          <h2 id="details-title">Details area</h2>
+          <p>
+            Use this larger panel for instructions, contextual information, or future
+            application screens. The spacing and width are designed to stay readable
+            on desktop while stacking naturally on smaller screens.
+          </p>
+
+          <div class="detail-grid" aria-label="Layout placeholders">
+            <article class="detail-card">
+              <h3>Primary content</h3>
+              <p>Reserved for the main task or workflow content.</p>
+            </article>
+            <article class="detail-card">
+              <h3>Supporting content</h3>
+              <p>Reserved for help text, status notes, or secondary information.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section status-section" id="status" aria-labelledby="status-title">
+          <h2 id="status-title">Status</h2>
+          <p>
+            No bonus business logic has been added yet. This section is a placeholder
+            for future status messaging.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year">2026</span> Get My Bonus.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
