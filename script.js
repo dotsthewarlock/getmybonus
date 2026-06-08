@@ -108,6 +108,7 @@ function createCodeButton(code) {
       await copyCodeToClipboard(code);
       button.classList.add('is-processed');
       button.setAttribute('aria-pressed', 'true');
+      button.setAttribute('aria-label', `Copied code ${code}`);
       setStatus(`Copied code ${code}`);
     } catch (error) {
       setStatus('Unable to copy that code automatically. Select and copy it manually.');
