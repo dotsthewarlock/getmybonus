@@ -1,1 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A mobile-friendly Get My Bonus workspace for generating code buttons and loading a bonus website."
+    >
+    <title>Get My Bonus</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="workspace-panel" aria-labelledby="workspace-title">
+        <header class="workspace-header">
+          <p class="eyebrow">Workspace</p>
+          <h1 id="workspace-title">Get My Bonus</h1>
+          <p class="panel-copy">
+            Paste codes or barcodes, generate buttons, and copy each value as you work.
+          </p>
+        </header>
 
+        <section class="tool-card" aria-labelledby="codes-title">
+          <div class="section-heading">
+            <p class="eyebrow">Step 1</p>
+            <h2 id="codes-title">Codes</h2>
+          </div>
+
+          <label for="code-input">Paste codes or barcodes, one per line</label>
+          <textarea
+            id="code-input"
+            name="code-input"
+            rows="12"
+            placeholder="1234567890123&#10;9876543210987"
+          ></textarea>
+
+          <button class="button button-primary" id="generate-links" type="button">
+            Generate Links
+          </button>
+        </section>
+
+        <section class="generated-card" aria-labelledby="generated-title">
+          <div class="section-heading">
+            <p class="eyebrow">Step 2</p>
+            <h2 id="generated-title">Generated codes</h2>
+          </div>
+          <p class="help-text" id="generated-help">
+            Generated code buttons will appear here. Click a button to copy its code.
+          </p>
+          <div
+            class="generated-list"
+            id="generated-codes"
+            aria-live="polite"
+            aria-describedby="generated-help"
+          ></div>
+        </section>
+      </aside>
+
+      <main class="content-panel" id="top">
+        <section class="browser-panel" aria-labelledby="browser-title">
+          <div class="section-heading">
+            <p class="eyebrow">Website</p>
+            <h2 id="browser-title">Load bonus website</h2>
+          </div>
+
+          <form class="website-controls" id="website-form">
+            <label for="website-url">Website URL</label>
+            <div class="url-actions">
+              <input
+                id="website-url"
+                name="website-url"
+                type="text"
+                value="https://getmybonus.ca"
+                autocomplete="url"
+                inputmode="url"
+                required
+              >
+              <button class="button button-primary" type="submit">Load</button>
+              <button class="button button-secondary" id="reset-website" type="button">
+                Reset
+              </button>
+            </div>
+          </form>
+
+          <p class="status-message" id="app-status" aria-live="polite">
+            Ready to generate code buttons and load the saved website URL.
+          </p>
+
+          <iframe
+            class="website-frame"
+            id="website-frame"
+            title="Get My Bonus website preview"
+            src="https://getmybonus.ca"
+          ></iframe>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year">2026</span> Get My Bonus.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
