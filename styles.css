@@ -1,1 +1,350 @@
+/*
+  Get My Bonus MVP workflow styles.
+  Plain CSS only: mobile-first, dark themed, and ready for GitHub Pages.
+*/
+:root {
+  --page-bg: #070b16;
+  --panel-bg: #101827;
+  --panel-bg-strong: #0c1220;
+  --surface: #111a2d;
+  --surface-soft: #162238;
+  --text: #f8fafc;
+  --muted: #a9b6cc;
+  --subtle: #76849c;
+  --accent: #7dd3fc;
+  --accent-strong: #22c55e;
+  --accent-pressed: #bbf7d0;
+  --danger: #fb7185;
+  --border: #334155;
+  --border-soft: rgba(148, 163, 184, 0.22);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  --radius: 0.75rem;
+  --content-width: 86rem;
+}
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--page-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.55;
+}
+
+body,
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+input,
+textarea {
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(125, 211, 252, 0.7);
+  outline-offset: 3px;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, var(--content-width));
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--panel-bg-strong);
+  box-shadow: var(--shadow);
+}
+
+.workspace-panel {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1rem;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.workspace-header,
+.tool-card,
+.generated-card,
+.browser-panel,
+.section-heading {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  margin-bottom: 0;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 9vw, 2.4rem);
+}
+
+h2 {
+  font-size: clamp(1.35rem, 7vw, 2rem);
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.panel-copy,
+.help-text,
+.status-message {
+  color: var(--muted);
+}
+
+.tool-card,
+.generated-card,
+.browser-panel {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  background: rgba(2, 6, 23, 0.44);
+}
+
+.tool-card,
+.generated-card {
+  padding: 1rem;
+}
+
+label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+textarea,
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: #030712;
+}
+
+textarea {
+  min-height: 16rem;
+  resize: vertical;
+  padding: 0.85rem;
+  color: #86efac;
+}
+
+input {
+  min-height: 3rem;
+  padding: 0.75rem 0.85rem;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: var(--subtle);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-weight: 800;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: #4f46e5;
+}
+
+.button-primary:hover {
+  background: #4338ca;
+}
+
+.button-secondary {
+  color: var(--text);
+  background: #334155;
+}
+
+.button-secondary:hover {
+  background: #475569;
+}
+
+.generated-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.code-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: calc(var(--radius) - 0.2rem);
+  color: #052e16;
+  background: var(--accent-pressed);
+  font-weight: 800;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.code-button::after {
+  content: "Copy";
+  margin-left: 1rem;
+  color: rgba(5, 46, 22, 0.7);
+  font-size: 0.8rem;
+}
+
+.code-button.is-processed {
+  color: #e0f2fe;
+  background: #155e75;
+}
+
+.code-button.is-processed::after {
+  content: "Copied";
+  color: #bae6fd;
+}
+
+.content-panel {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.browser-panel {
+  min-height: 100%;
+  padding: 1rem;
+}
+
+.website-controls {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.url-actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.status-message {
+  min-height: 1.5rem;
+}
+
+.website-frame {
+  width: 100%;
+  min-height: 32rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+
+.site-footer {
+  width: min(100%, var(--content-width));
+  margin: 0 auto;
+  padding: 1rem;
+  color: var(--subtle);
+  background: var(--page-bg);
+  border-top: 1px solid var(--border-soft);
+}
+
+@media (min-width: 640px) {
+  .url-actions {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+  }
+}
+
+@media (min-width: 860px) {
+  body {
+    background: linear-gradient(90deg, var(--panel-bg) 0 23rem, var(--page-bg) 23rem);
+  }
+
+  .app-shell {
+    display: grid;
+    grid-template-columns: 23rem minmax(0, 1fr);
+    width: 100%;
+    max-width: none;
+  }
+
+  .workspace-panel {
+    position: sticky;
+    top: 0;
+    align-content: start;
+    min-height: 100vh;
+    padding: 1.5rem 1rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 0;
+  }
+
+  .content-panel {
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+
+  .browser-panel {
+    padding: 1.25rem;
+  }
+
+  .website-frame {
+    min-height: calc(100vh - 14rem);
+  }
+
+  .site-footer {
+    padding-left: 24rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app-shell {
+    grid-template-columns: 25rem minmax(0, 1fr);
+  }
+
+  body {
+    background: linear-gradient(90deg, var(--panel-bg) 0 25rem, var(--page-bg) 25rem);
+  }
+
+  .content-panel {
+    padding: 2rem;
+  }
+
+  .site-footer {
+    padding-left: 26rem;
+  }
+}
