@@ -37,11 +37,21 @@ function normalizeUrl(url) {
 }
 
 function saveWebsiteUrl(url) {
-  localStorage.setItem(WEBSITE_URL_STORAGE_KEY, url);
+  try {
+    localStorage.setItem(WEBSITE_URL_STORAGE_KEY, url);
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 function loadWebsiteUrl() {
-  return localStorage.getItem(WEBSITE_URL_STORAGE_KEY) || DEFAULT_WEBSITE_URL;
+  try {
+    return localStorage.getItem(WEBSITE_URL_STORAGE_KEY) || DEFAULT_WEBSITE_URL;
+  } catch (error) {
+    setStatus('Using the default website URL because saved storage is unavailable.');
+    return DEFAULT_WEBSITE_URL;
+  }
 }
 
 function updateWebsite(url) {
@@ -55,8 +65,12 @@ function updateWebsite(url) {
     websiteFrame.src = normalizedUrl;
   }
 
-  saveWebsiteUrl(normalizedUrl);
-  setStatus(`Loaded ${normalizedUrl}`);
+  const saved = saveWebsiteUrl(normalizedUrl);
+  setStatus(
+    saved
+      ? `Loaded ${normalizedUrl}`
+      : `Loaded ${normalizedUrl}, but this browser could not save it.`
+  );
 }
 
 async function copyCodeToClipboard(code) {
@@ -72,8 +86,12 @@ async function copyCodeToClipboard(code) {
   temporaryInput.style.opacity = '0';
   document.body.appendChild(temporaryInput);
   temporaryInput.select();
-  document.execCommand('copy');
+  const copied = document.execCommand('copy');
   temporaryInput.remove();
+
+  if (!copied) {
+    throw new Error('Clipboard copy failed.');
+  }
 }
 
 function createCodeButton(code) {
@@ -83,12 +101,17 @@ function createCodeButton(code) {
   button.textContent = code;
   button.dataset.code = code;
   button.setAttribute('aria-label', `Copy code ${code}`);
+  button.setAttribute('aria-pressed', 'false');
 
   button.addEventListener('click', async () => {
-    await copyCodeToClipboard(code);
-    button.classList.add('is-processed');
-    button.setAttribute('aria-pressed', 'true');
-    setStatus(`Copied code ${code}`);
+    try {
+      await copyCodeToClipboard(code);
+      button.classList.add('is-processed');
+      button.setAttribute('aria-pressed', 'true');
+      setStatus(`Copied code ${code}`);
+    } catch (error) {
+      setStatus('Unable to copy that code automatically. Select and copy it manually.');
+    }
   });
 
   return button;
